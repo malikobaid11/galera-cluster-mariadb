@@ -30,3 +30,15 @@ wsrep_sst_method=rsync
 wsrep_node_address="server_ip"
 wsrep_node_name="node_name"
 ```
+
+#### `scripts/install_mariadb.sh`
+```bash
+#!/bin/bash
+# Script to install MariaDB and rsync on Ubuntu 18.04
+
+echo "Updating system and installing MariaDB..."
+sudo apt update
+sudo apt install -y mariadb-server rsync
+
+echo "MariaDB and rsync installed."
+```
