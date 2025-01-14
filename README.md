@@ -1,7 +1,5 @@
 # galera-cluster-mariadb
 
-# Galera Cluster with MariaDB
-
 This repository provides step-by-step instructions and scripts to configure a Galera Cluster with MariaDB on Ubuntu 18.04 servers.
 
 ## Features
@@ -10,11 +8,7 @@ This repository provides step-by-step instructions and scripts to configure a Ga
 - High availability
 
 ## Getting Started
-Follow the detailed guides in the [docs](docs/) directory for installation and configuration.
-
-## Repository Structure
-- `docs/`: Documentation for each step of the setup process
-- `scripts/`: Scripts for automating installation and setup
+Follow the detailed guides for installation and configuration.
 
 ## Prerequisites
 - Ubuntu 18.04 servers
