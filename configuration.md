@@ -42,3 +42,40 @@ sudo apt install -y mariadb-server rsync
 
 echo "MariaDB and rsync installed."
 ```
+
+
+
+### Script to configure a Galera node
+
+```
+#!/bin/bash
+GALERA_CONF="/etc/mysql/conf.d/galera.cnf"
+
+echo "Configuring Galera Node..."
+sudo bash -c "cat > $GALERA_CONF <<EOF
+[mysqld]
+binlog_format=ROW
+default-storage-engine=innodb
+innodb_autoinc_lock_mode=2
+bind-address=0.0.0.0
+
+# Galera Provider Configuration
+wsrep_on=ON
+wsrep_provider=/usr/lib/galera/libgalera_smm.so
+
+# Galera Cluster Configuration
+wsrep_cluster_name="test_cluster"
+wsrep_cluster_address="gcomm://10.0.0.5,10.0.0.6,10.0.0.7"
+
+# Galera Synchronization Configuration
+wsrep_sst_method=rsync
+
+# Galera Node Configuration
+wsrep_node_address="$1"
+wsrep_node_name="$2"
+EOF"
+
+echo "Node configured with IP: $1 and name: $2."
+
+```
+
